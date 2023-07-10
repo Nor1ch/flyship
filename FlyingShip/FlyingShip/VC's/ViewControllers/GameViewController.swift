@@ -13,17 +13,11 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
+            let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), player: Constants.ImagesString.playerPlane_1, background: Constants.ImagesString.background)
+            scene.scaleMode = .aspectFill
+            scene.setupDelegate = self
+            view.presentScene(scene)
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
@@ -46,4 +40,8 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+}
+
+extension GameViewController: setupGameSceneDelegate {
+    
 }
