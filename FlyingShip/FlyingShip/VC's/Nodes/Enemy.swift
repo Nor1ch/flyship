@@ -22,8 +22,8 @@ class Enemy: SKSpriteNode {
         let texture = SKTexture(imageNamed: type.name)
         
         super.init(texture: texture, color: .white, size: CGSize(width: enemySize, height: enemySize))
-        
-        physicsBody = SKPhysicsBody(texture: texture, size: CGSize(width: enemySize, height: enemySize))
+//        physicsBody = SKPhysicsBody(texture: texture, size: CGSize(width: enemySize, height: enemySize))
+        physicsBody = SKPhysicsBody(circleOfRadius: enemySize/2)
         physicsBody?.categoryBitMask = Collision.enemy.rawValue
         physicsBody?.collisionBitMask = Collision.player.rawValue | Collision.playerWeapon.rawValue
         physicsBody?.contactTestBitMask = Collision.player.rawValue | Collision.playerWeapon.rawValue

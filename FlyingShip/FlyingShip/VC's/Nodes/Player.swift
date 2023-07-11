@@ -20,7 +20,8 @@ class Player: SKSpriteNode {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = 1
         self.position = CGPoint(x: 0, y: position - self.size.width*5)
-        physicsBody = SKPhysicsBody(texture: texture, size: self.size)
+//        physicsBody = SKPhysicsBody(texture: texture, size: self.size)
+        physicsBody = SKPhysicsBody(circleOfRadius: self.frame.width/2)
         physicsBody?.categoryBitMask = Collision.player.rawValue
         physicsBody?.collisionBitMask = Collision.enemy.rawValue | Collision.enemyWeapon.rawValue
         physicsBody?.contactTestBitMask = Collision.enemy.rawValue | Collision.enemyWeapon.rawValue

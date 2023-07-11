@@ -28,6 +28,9 @@ enum Constants {
         static var playerRocket: String {
             "playerRocket"
         }
+        static var gameOver: String {
+            "gameOver"
+        }
     }
     enum EmitterNames{
         static var explosion: String {

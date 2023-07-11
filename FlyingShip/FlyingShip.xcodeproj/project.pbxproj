@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		056187542A5D1D1F004F3179 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187532A5D1D1F004F3179 /* GameSettings.swift */; };
+		056187562A5D1D62004F3179 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187552A5D1D61004F3179 /* Profile.swift */; };
+		056187582A5D23D7004F3179 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187572A5D23D7004F3179 /* LabelNode.swift */; };
+		0561875B2A5D28A6004F3179 /* papercut.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0561875A2A5D28A6004F3179 /* papercut.ttf */; };
 		05A0093A2A597E38003EB4B4 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A009392A597E37003EB4B4 /* Enemy.swift */; };
 		05A0093C2A597F91003EB4B4 /* EnemyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0093B2A597F91003EB4B4 /* EnemyType.swift */; };
 		05A0093E2A598F0B003EB4B4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0093D2A598F0B003EB4B4 /* Player.swift */; };
@@ -26,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		056187532A5D1D1F004F3179 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		056187552A5D1D61004F3179 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		056187572A5D23D7004F3179 /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
+		0561875A2A5D28A6004F3179 /* papercut.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = papercut.ttf; sourceTree = "<group>"; };
+		0561875C2A5D29F4004F3179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		05A009392A597E37003EB4B4 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		05A0093B2A597F91003EB4B4 /* EnemyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyType.swift; sourceTree = "<group>"; };
 		05A0093D2A598F0B003EB4B4 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -56,6 +65,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		056187522A5D1D0E004F3179 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				056187532A5D1D1F004F3179 /* GameSettings.swift */,
+				056187552A5D1D61004F3179 /* Profile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		056187592A5D2852004F3179 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				0561875A2A5D28A6004F3179 /* papercut.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		05A009342A583261003EB4B4 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +126,7 @@
 				05A0093B2A597F91003EB4B4 /* EnemyType.swift */,
 				05A0093D2A598F0B003EB4B4 /* Player.swift */,
 				05A0093F2A5C26AB003EB4B4 /* PlayerRocket.swift */,
+				056187572A5D23D7004F3179 /* LabelNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -123,6 +150,8 @@
 		05EC01372A4D8129008393DB /* FlyingShip */ = {
 			isa = PBXGroup;
 			children = (
+				0561875C2A5D29F4004F3179 /* Info.plist */,
+				056187522A5D1D0E004F3179 /* Models */,
 				05A009352A583269003EB4B4 /* VC's */,
 				05A009342A583261003EB4B4 /* Actions */,
 				05EC014F2A4D8501008393DB /* Assets */,
@@ -137,6 +166,7 @@
 		05EC014F2A4D8501008393DB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				056187592A5D2852004F3179 /* Font */,
 				05EC01502A4D8517008393DB /* Constants.swift */,
 				05EC01522A4D8527008393DB /* Images.xcassets */,
 			);
@@ -208,6 +238,7 @@
 				05EC01492A4D812C008393DB /* LaunchScreen.storyboard in Resources */,
 				05A009432A5C2D0C003EB4B4 /* Explosion.sks in Resources */,
 				05A009442A5C2D0C003EB4B4 /* Assets.xcassets in Resources */,
+				0561875B2A5D28A6004F3179 /* papercut.ttf in Resources */,
 				05EC013D2A4D8129008393DB /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,8 +250,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056187582A5D23D7004F3179 /* LabelNode.swift in Sources */,
 				05EC013F2A4D8129008393DB /* GameScene.swift in Sources */,
+				056187562A5D1D62004F3179 /* Profile.swift in Sources */,
 				05A0093A2A597E38003EB4B4 /* Enemy.swift in Sources */,
+				056187542A5D1D1F004F3179 /* GameSettings.swift in Sources */,
 				05A009402A5C26AB003EB4B4 /* PlayerRocket.swift in Sources */,
 				05A0093C2A597F91003EB4B4 /* EnemyType.swift in Sources */,
 				05EC01412A4D8129008393DB /* GameViewController.swift in Sources */,
@@ -375,7 +409,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlyingShip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -403,7 +439,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlyingShip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

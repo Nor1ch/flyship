@@ -16,9 +16,12 @@ private extension CGFloat {
     static let smallEnemyShield = 1
     static let mediumEnemyShield = 2
     static let largeEnemyShield = 3
-    static let smallEnemySpeed = 200.0
-    static let mediumEnemySpeed = 150.0
+    static let smallEnemySpeed = 150.0
+    static let mediumEnemySpeed = 125.0
     static let largeEnemySpeed = 100.0
+    static let anchorOffset = 0.5
+    static let offSetLeft = 100.0
+    static let fontSize = 36.0
 }
 protocol setupGameSceneDelegate: AnyObject {
     
@@ -34,9 +37,22 @@ enum Collision: UInt32 {
 class GameScene: SKScene {
     private var background: String
     private var player: SKSpriteNode
+    private var scoreLabel: SKLabelNode?
+    private var liveLabel: SKLabelNode?
     private var gameTimer: Timer?
+    
+    private var score: Int = 0 {
+        didSet {
+            scoreLabel?.text = "Score: " + "\(score)"
+        }
+    }
+    private var playerLives = 1 {
+        didSet {
+            liveLabel?.text = "Live: " + "\(playerLives)"
+        }
+    }
     private var isPlayerAlive = true
-    private var playerLives = 10
+    
     private let enemiesType: [EnemyType] = [EnemyType(name: Constants.ImagesString.enemySmall, shields: CGFloat.smallEnemyShield, speed: CGFloat.smallEnemySpeed, enemySize: CGFloat.smallEnemySize), EnemyType(name: Constants.ImagesString.enemyMedium, shields: CGFloat.mediumEnemyShield, speed: CGFloat.mediumEnemySpeed, enemySize: CGFloat.mediunEnemySize), EnemyType(name: Constants.ImagesString.enemyLarge, shields: CGFloat.largeEnemyShield, speed: CGFloat.largeEnemySpeed, enemySize: CGFloat.largeEnemySize)]
     
     weak var setupDelegate: setupGameSceneDelegate?
@@ -52,9 +68,10 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.anchorPoint = CGPoint(x: CGFloat.anchorOffset, y: CGFloat.anchorOffset)
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
+        setupLabels()
         createBackground()
         addEnemy()
         gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addEnemy), userInfo: nil, repeats: true)
@@ -86,9 +103,9 @@ class GameScene: SKScene {
         for i in 0...1 {
             let background = SKSpriteNode(imageNamed: background)
             if let scene = self.scene {
-                background.name = "Background"
+                background.name = "background"
                 background.size = CGSize(width: scene.size.width, height: scene.size.height)
-                background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                background.anchorPoint = CGPoint(x: CGFloat.anchorOffset, y: CGFloat.anchorOffset)
                 background.position = CGPoint(x: 0, y: CGFloat(i) * background.size.height)
                 background.zPosition = -1
                 scene.addChild(background)
@@ -96,7 +113,7 @@ class GameScene: SKScene {
         }
     }
     private func animateBackground(){
-        self.enumerateChildNodes(withName: "Background", using: {
+        self.enumerateChildNodes(withName: "background", using: {
             (node, error) in
             node.position.y -= 2
                 if node.position.y < -node.frame.size.height {
@@ -111,10 +128,37 @@ class GameScene: SKScene {
             explosion.run(SKAction.wait(forDuration: 2), completion: { explosion.removeFromParent()})
         }
     }
+    private func setupLabels(){
+        scoreLabel = SKLabelNode(text: "Score: 0")
+        liveLabel = SKLabelNode (text: "Live: " + "\(playerLives)")
+        guard let scoreLabel = scoreLabel, let liveLabel = liveLabel else { return }
+        scoreLabel.position = CGPoint(x: frame.minX + CGFloat.offSetLeft, y: frame.maxY - scoreLabel.frame.size.width/2)
+        scoreLabel.fontSize = CGFloat.fontSize
+        scoreLabel.fontColor = .white
+        scoreLabel.fontName = "papercut"
+        scoreLabel.zPosition = 0
+        
+        liveLabel.position = CGPoint(x: frame.minX + CGFloat.offSetLeft, y: scoreLabel.position.y - liveLabel.frame.size.height)
+        liveLabel.fontSize = CGFloat.fontSize
+        liveLabel.fontColor = .white
+        liveLabel.fontName = "papercut"
+        liveLabel.zPosition = 0
+        addChild(scoreLabel)
+        addChild(liveLabel)
+    }
+    private func gameOver(){
+        isPlayerAlive = false
+        self.enumerateChildNodes(withName: "enemy") { node, error in
+            node.removeFromParent()
+        }
+        let gameOver = SKSpriteNode(imageNamed: Constants.ImagesString.gameOver)
+        addChild(gameOver)
+    }
     @objc private func addEnemy(){
-            let enemyType = Int.random(in: 0...self.enemiesType.count-1)
-            let enemy = Enemy(type: self.enemiesType[enemyType], startPositionY: self.frame.maxY, minX: self.frame.minX, maxX: self.frame.maxX)
-            self.addChild(enemy)
+        guard isPlayerAlive else { return }
+        let enemyType = Int.random(in: 0...self.enemiesType.count-1)
+        let enemy = Enemy(type: self.enemiesType[enemyType], startPositionY: self.frame.maxY, minX: self.frame.minX, maxX: self.frame.maxX)
+        addChild(enemy)
     }
 }
 
@@ -132,6 +176,7 @@ extension GameScene: SKPhysicsContactDelegate {
             playerLives -= 1
             if playerLives == 0 {
                 print("gameover")
+                gameOver()
                 secondNode.removeFromParent()
             }
             firstNode.removeFromParent()
@@ -140,6 +185,7 @@ extension GameScene: SKPhysicsContactDelegate {
             
             if enemy.shields == 0 {
                 makeExplosion(position: enemy.position)
+                score += 5
                 enemy.removeFromParent()
             }
             makeExplosion(position: enemy.position)

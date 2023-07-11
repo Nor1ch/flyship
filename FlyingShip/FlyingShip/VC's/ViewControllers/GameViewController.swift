@@ -10,19 +10,15 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let view = self.view as! SKView? {
-            let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), player: Constants.ImagesString.playerPlane_1, background: Constants.ImagesString.background)
-            scene.scaleMode = .aspectFill
-            scene.setupDelegate = self
-            view.presentScene(scene)
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        showGame()
     }
 
     override var shouldAutorotate: Bool {
@@ -39,6 +35,19 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    private func showGame(){
+        if let view = self.view as! SKView? {
+            let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), player: Constants.ImagesString.playerPlane_1, background: Constants.ImagesString.background)
+            scene.scaleMode = .aspectFill
+            scene.setupDelegate = self
+            view.presentScene(scene)
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
     }
 }
 
