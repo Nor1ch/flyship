@@ -11,6 +11,13 @@
 		056187562A5D1D62004F3179 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187552A5D1D61004F3179 /* Profile.swift */; };
 		056187582A5D23D7004F3179 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187572A5D23D7004F3179 /* LabelNode.swift */; };
 		0561875B2A5D28A6004F3179 /* papercut.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0561875A2A5D28A6004F3179 /* papercut.ttf */; };
+		0561875E2A5D3975004F3179 /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561875D2A5D3975004F3179 /* EntranceVC.swift */; };
+		056187612A5D3EF9004F3179 /* EntranceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187602A5D3EF9004F3179 /* EntranceViewModel.swift */; };
+		056187642A5D4097004F3179 /* EntranceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187632A5D4097004F3179 /* EntranceTableViewCell.swift */; };
+		056187662A5D508F004F3179 /* pixelcyr_normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 056187652A5D508F004F3179 /* pixelcyr_normal.ttf */; };
+		056187682A5D54BB004F3179 /* EntranceTableViewCellADD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187672A5D54BB004F3179 /* EntranceTableViewCellADD.swift */; };
+		0561876C2A5D588D004F3179 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561876B2A5D588D004F3179 /* AddVC.swift */; };
+		0561876E2A5D626B004F3179 /* AddVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561876D2A5D626B004F3179 /* AddVCViewModel.swift */; };
 		05A0093A2A597E38003EB4B4 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A009392A597E37003EB4B4 /* Enemy.swift */; };
 		05A0093C2A597F91003EB4B4 /* EnemyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0093B2A597F91003EB4B4 /* EnemyType.swift */; };
 		05A0093E2A598F0B003EB4B4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0093D2A598F0B003EB4B4 /* Player.swift */; };
@@ -27,6 +34,7 @@
 		05EC01492A4D812C008393DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EC01472A4D812C008393DB /* LaunchScreen.storyboard */; };
 		05EC01512A4D8517008393DB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EC01502A4D8517008393DB /* Constants.swift */; };
 		05EC01532A4D8527008393DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05EC01522A4D8527008393DB /* Images.xcassets */; };
+		1C82A91A680974ED5EBFCC6D /* Pods_FlyingShip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB12EDDF89921CA09B65BFEE /* Pods_FlyingShip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +43,13 @@
 		056187572A5D23D7004F3179 /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
 		0561875A2A5D28A6004F3179 /* papercut.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = papercut.ttf; sourceTree = "<group>"; };
 		0561875C2A5D29F4004F3179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0561875D2A5D3975004F3179 /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
+		056187602A5D3EF9004F3179 /* EntranceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceViewModel.swift; sourceTree = "<group>"; };
+		056187632A5D4097004F3179 /* EntranceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceTableViewCell.swift; sourceTree = "<group>"; };
+		056187652A5D508F004F3179 /* pixelcyr_normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelcyr_normal.ttf; sourceTree = "<group>"; };
+		056187672A5D54BB004F3179 /* EntranceTableViewCellADD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceTableViewCellADD.swift; sourceTree = "<group>"; };
+		0561876B2A5D588D004F3179 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		0561876D2A5D626B004F3179 /* AddVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVCViewModel.swift; sourceTree = "<group>"; };
 		05A009392A597E37003EB4B4 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		05A0093B2A597F91003EB4B4 /* EnemyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyType.swift; sourceTree = "<group>"; };
 		05A0093D2A598F0B003EB4B4 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -52,6 +67,9 @@
 		05EC01482A4D812C008393DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05EC01502A4D8517008393DB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05EC01522A4D8527008393DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		17D3283BA192915E267B7E38 /* Pods-FlyingShip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyingShip.release.xcconfig"; path = "Target Support Files/Pods-FlyingShip/Pods-FlyingShip.release.xcconfig"; sourceTree = "<group>"; };
+		67F0E47F7B2850DFF8B0FAE7 /* Pods-FlyingShip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlyingShip.debug.xcconfig"; path = "Target Support Files/Pods-FlyingShip/Pods-FlyingShip.debug.xcconfig"; sourceTree = "<group>"; };
+		BB12EDDF89921CA09B65BFEE /* Pods_FlyingShip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlyingShip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C82A91A680974ED5EBFCC6D /* Pods_FlyingShip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,9 +96,45 @@
 		056187592A5D2852004F3179 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				056187652A5D508F004F3179 /* pixelcyr_normal.ttf */,
 				0561875A2A5D28A6004F3179 /* papercut.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		0561875F2A5D3EE4004F3179 /* EntranceVC */ = {
+			isa = PBXGroup;
+			children = (
+				056187622A5D4079004F3179 /* TableViewCell */,
+				0561875D2A5D3975004F3179 /* EntranceVC.swift */,
+				056187602A5D3EF9004F3179 /* EntranceViewModel.swift */,
+			);
+			path = EntranceVC;
+			sourceTree = "<group>";
+		};
+		056187622A5D4079004F3179 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				056187632A5D4097004F3179 /* EntranceTableViewCell.swift */,
+				056187672A5D54BB004F3179 /* EntranceTableViewCellADD.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		056187692A5D5875004F3179 /* GameVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GameVC;
+			sourceTree = "<group>";
+		};
+		0561876A2A5D587E004F3179 /* AddVC */ = {
+			isa = PBXGroup;
+			children = (
+				0561876B2A5D588D004F3179 /* AddVC.swift */,
+				0561876D2A5D626B004F3179 /* AddVCViewModel.swift */,
+			);
+			path = AddVC;
 			sourceTree = "<group>";
 		};
 		05A009342A583261003EB4B4 /* Actions */ = {
@@ -114,6 +169,9 @@
 		05A009372A583283003EB4B4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0561876A2A5D587E004F3179 /* AddVC */,
+				056187692A5D5875004F3179 /* GameVC */,
+				0561875F2A5D3EE4004F3179 /* EntranceVC */,
 				05EC01402A4D8129008393DB /* GameViewController.swift */,
 			);
 			path = ViewControllers;
@@ -136,6 +194,8 @@
 			children = (
 				05EC01372A4D8129008393DB /* FlyingShip */,
 				05EC01362A4D8129008393DB /* Products */,
+				67E9C7046B1F64E4C64FA0C9 /* Pods */,
+				683191ECBB772315326B32D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +233,23 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		67E9C7046B1F64E4C64FA0C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67F0E47F7B2850DFF8B0FAE7 /* Pods-FlyingShip.debug.xcconfig */,
+				17D3283BA192915E267B7E38 /* Pods-FlyingShip.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		683191ECBB772315326B32D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB12EDDF89921CA09B65BFEE /* Pods_FlyingShip.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +257,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05EC014C2A4D812C008393DB /* Build configuration list for PBXNativeTarget "FlyingShip" */;
 			buildPhases = (
+				E56E1E7C725E50211FF72223 /* [CP] Check Pods Manifest.lock */,
 				05EC01312A4D8129008393DB /* Sources */,
 				05EC01322A4D8129008393DB /* Frameworks */,
 				05EC01332A4D8129008393DB /* Resources */,
+				29EB44F98CF5359EDDEF6802 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,10 +319,53 @@
 				05A009442A5C2D0C003EB4B4 /* Assets.xcassets in Resources */,
 				0561875B2A5D28A6004F3179 /* papercut.ttf in Resources */,
 				05EC013D2A4D8129008393DB /* Actions.sks in Resources */,
+				056187662A5D508F004F3179 /* pixelcyr_normal.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29EB44F98CF5359EDDEF6802 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlyingShip/Pods-FlyingShip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlyingShip/Pods-FlyingShip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlyingShip/Pods-FlyingShip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E56E1E7C725E50211FF72223 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlyingShip-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05EC01312A4D8129008393DB /* Sources */ = {
@@ -257,9 +379,15 @@
 				056187542A5D1D1F004F3179 /* GameSettings.swift in Sources */,
 				05A009402A5C26AB003EB4B4 /* PlayerRocket.swift in Sources */,
 				05A0093C2A597F91003EB4B4 /* EnemyType.swift in Sources */,
+				0561876E2A5D626B004F3179 /* AddVCViewModel.swift in Sources */,
+				056187642A5D4097004F3179 /* EntranceTableViewCell.swift in Sources */,
+				0561876C2A5D588D004F3179 /* AddVC.swift in Sources */,
 				05EC01412A4D8129008393DB /* GameViewController.swift in Sources */,
+				0561875E2A5D3975004F3179 /* EntranceVC.swift in Sources */,
 				05A0093E2A598F0B003EB4B4 /* Player.swift in Sources */,
 				05EC01392A4D8129008393DB /* AppDelegate.swift in Sources */,
+				056187612A5D3EF9004F3179 /* EntranceViewModel.swift in Sources */,
+				056187682A5D54BB004F3179 /* EntranceTableViewCellADD.swift in Sources */,
 				05EC01512A4D8517008393DB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +532,7 @@
 		};
 		05EC014D2A4D812C008393DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67F0E47F7B2850DFF8B0FAE7 /* Pods-FlyingShip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -434,6 +563,7 @@
 		};
 		05EC014E2A4D812C008393DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17D3283BA192915E267B7E38 /* Pods-FlyingShip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -37,4 +37,20 @@ enum Constants {
             "Explosion"
         }
     }
+    enum Images {
+        static var backgroundEntrance: UIImage? {
+            UIImage(named: "backgroundEntrance")
+        }
+    }
+    enum Fonts {
+        static var logoLabel: UIFont? {
+            UIFont(name: "papercut", size: 40)
+        }
+        static var profileName: UIFont? {
+            UIFont(name: "pixelcyr_normal", size: 12)
+        }
+        static var profileScore: UIFont? {
+            UIFont(name: "papercut", size: 22)
+        }
+    }
 }
