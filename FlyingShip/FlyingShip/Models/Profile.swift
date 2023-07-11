@@ -10,7 +10,7 @@ import Foundation
 
 struct Profile {
     let name: String
-    let bestScroe: Int
+    var bestScroe: Int
     let image: String?
     let playerImage: String
     let backgroundImage: String

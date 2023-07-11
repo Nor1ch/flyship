@@ -14,10 +14,21 @@
 		0561875E2A5D3975004F3179 /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561875D2A5D3975004F3179 /* EntranceVC.swift */; };
 		056187612A5D3EF9004F3179 /* EntranceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187602A5D3EF9004F3179 /* EntranceViewModel.swift */; };
 		056187642A5D4097004F3179 /* EntranceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187632A5D4097004F3179 /* EntranceTableViewCell.swift */; };
-		056187662A5D508F004F3179 /* pixelcyr_normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 056187652A5D508F004F3179 /* pixelcyr_normal.ttf */; };
 		056187682A5D54BB004F3179 /* EntranceTableViewCellADD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187672A5D54BB004F3179 /* EntranceTableViewCellADD.swift */; };
 		0561876C2A5D588D004F3179 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561876B2A5D588D004F3179 /* AddVC.swift */; };
 		0561876E2A5D626B004F3179 /* AddVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561876D2A5D626B004F3179 /* AddVCViewModel.swift */; };
+		056187722A5D7057004F3179 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187712A5D7057004F3179 /* RouterProtocol.swift */; };
+		056187742A5D7061004F3179 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187732A5D7061004F3179 /* MainRouter.swift */; };
+		056187762A5D70B8004F3179 /* ModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187752A5D70B8004F3179 /* ModalTransition.swift */; };
+		056187782A5D70CA004F3179 /* PushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187772A5D70CA004F3179 /* PushTransition.swift */; };
+		0561877A2A5D70D4004F3179 /* EmptyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187792A5D70D4004F3179 /* EmptyTransition.swift */; };
+		0561877C2A5D70E1004F3179 /* TransitionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561877B2A5D70E1004F3179 /* TransitionProtocol.swift */; };
+		0561877E2A5D7146004F3179 /* EntranceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561877D2A5D7146004F3179 /* EntranceRoute.swift */; };
+		056187802A5D72E3004F3179 /* AddRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561877F2A5D72E3004F3179 /* AddRoute.swift */; };
+		056187852A5D77D3004F3179 /* troika.otf in Resources */ = {isa = PBXBuildFile; fileRef = 056187842A5D77D3004F3179 /* troika.otf */; };
+		056187892A5D8622004F3179 /* Flow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056187882A5D8622004F3179 /* Flow+Extension.swift */; };
+		0561878B2A5D8878004F3179 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561878A2A5D8878004F3179 /* HeaderCollectionView.swift */; };
+		0561878D2A5D8A9C004F3179 /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0561878C2A5D8A9C004F3179 /* AddCollectionViewCell.swift */; };
 		05A0093A2A597E38003EB4B4 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A009392A597E37003EB4B4 /* Enemy.swift */; };
 		05A0093C2A597F91003EB4B4 /* EnemyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0093B2A597F91003EB4B4 /* EnemyType.swift */; };
 		05A0093E2A598F0B003EB4B4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0093D2A598F0B003EB4B4 /* Player.swift */; };
@@ -29,7 +40,6 @@
 		05EC013D2A4D8129008393DB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 05EC013C2A4D8129008393DB /* Actions.sks */; };
 		05EC013F2A4D8129008393DB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EC013E2A4D8129008393DB /* GameScene.swift */; };
 		05EC01412A4D8129008393DB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EC01402A4D8129008393DB /* GameViewController.swift */; };
-		05EC01442A4D8129008393DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EC01422A4D8129008393DB /* Main.storyboard */; };
 		05EC01462A4D812C008393DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05EC01452A4D812C008393DB /* Assets.xcassets */; };
 		05EC01492A4D812C008393DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EC01472A4D812C008393DB /* LaunchScreen.storyboard */; };
 		05EC01512A4D8517008393DB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EC01502A4D8517008393DB /* Constants.swift */; };
@@ -46,10 +56,21 @@
 		0561875D2A5D3975004F3179 /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
 		056187602A5D3EF9004F3179 /* EntranceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceViewModel.swift; sourceTree = "<group>"; };
 		056187632A5D4097004F3179 /* EntranceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceTableViewCell.swift; sourceTree = "<group>"; };
-		056187652A5D508F004F3179 /* pixelcyr_normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelcyr_normal.ttf; sourceTree = "<group>"; };
 		056187672A5D54BB004F3179 /* EntranceTableViewCellADD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceTableViewCellADD.swift; sourceTree = "<group>"; };
 		0561876B2A5D588D004F3179 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		0561876D2A5D626B004F3179 /* AddVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVCViewModel.swift; sourceTree = "<group>"; };
+		056187712A5D7057004F3179 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		056187732A5D7061004F3179 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		056187752A5D70B8004F3179 /* ModalTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransition.swift; sourceTree = "<group>"; };
+		056187772A5D70CA004F3179 /* PushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTransition.swift; sourceTree = "<group>"; };
+		056187792A5D70D4004F3179 /* EmptyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTransition.swift; sourceTree = "<group>"; };
+		0561877B2A5D70E1004F3179 /* TransitionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionProtocol.swift; sourceTree = "<group>"; };
+		0561877D2A5D7146004F3179 /* EntranceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceRoute.swift; sourceTree = "<group>"; };
+		0561877F2A5D72E3004F3179 /* AddRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoute.swift; sourceTree = "<group>"; };
+		056187842A5D77D3004F3179 /* troika.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = troika.otf; sourceTree = "<group>"; };
+		056187882A5D8622004F3179 /* Flow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow+Extension.swift"; sourceTree = "<group>"; };
+		0561878A2A5D8878004F3179 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
+		0561878C2A5D8A9C004F3179 /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		05A009392A597E37003EB4B4 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		05A0093B2A597F91003EB4B4 /* EnemyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyType.swift; sourceTree = "<group>"; };
 		05A0093D2A598F0B003EB4B4 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -62,7 +83,6 @@
 		05EC013C2A4D8129008393DB /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		05EC013E2A4D8129008393DB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		05EC01402A4D8129008393DB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		05EC01432A4D8129008393DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05EC01452A4D812C008393DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05EC01482A4D812C008393DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05EC01502A4D8517008393DB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -96,7 +116,7 @@
 		056187592A5D2852004F3179 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				056187652A5D508F004F3179 /* pixelcyr_normal.ttf */,
+				056187842A5D77D3004F3179 /* troika.otf */,
 				0561875A2A5D28A6004F3179 /* papercut.ttf */,
 			);
 			path = Font;
@@ -108,6 +128,7 @@
 				056187622A5D4079004F3179 /* TableViewCell */,
 				0561875D2A5D3975004F3179 /* EntranceVC.swift */,
 				056187602A5D3EF9004F3179 /* EntranceViewModel.swift */,
+				0561877D2A5D7146004F3179 /* EntranceRoute.swift */,
 			);
 			path = EntranceVC;
 			sourceTree = "<group>";
@@ -131,10 +152,43 @@
 		0561876A2A5D587E004F3179 /* AddVC */ = {
 			isa = PBXGroup;
 			children = (
+				056187812A5D7467004F3179 /* CollectionView */,
 				0561876B2A5D588D004F3179 /* AddVC.swift */,
 				0561876D2A5D626B004F3179 /* AddVCViewModel.swift */,
+				0561877F2A5D72E3004F3179 /* AddRoute.swift */,
 			);
 			path = AddVC;
+			sourceTree = "<group>";
+		};
+		0561876F2A5D7022004F3179 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				056187712A5D7057004F3179 /* RouterProtocol.swift */,
+				056187732A5D7061004F3179 /* MainRouter.swift */,
+				056187702A5D7042004F3179 /* Transitions */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		056187702A5D7042004F3179 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				056187752A5D70B8004F3179 /* ModalTransition.swift */,
+				056187772A5D70CA004F3179 /* PushTransition.swift */,
+				056187792A5D70D4004F3179 /* EmptyTransition.swift */,
+				0561877B2A5D70E1004F3179 /* TransitionProtocol.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		056187812A5D7467004F3179 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				056187882A5D8622004F3179 /* Flow+Extension.swift */,
+				0561878A2A5D8878004F3179 /* HeaderCollectionView.swift */,
+				0561878C2A5D8A9C004F3179 /* AddCollectionViewCell.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		05A009342A583261003EB4B4 /* Actions */ = {
@@ -210,15 +264,15 @@
 		05EC01372A4D8129008393DB /* FlyingShip */ = {
 			isa = PBXGroup;
 			children = (
-				0561875C2A5D29F4004F3179 /* Info.plist */,
+				0561876F2A5D7022004F3179 /* Router */,
 				056187522A5D1D0E004F3179 /* Models */,
 				05A009352A583269003EB4B4 /* VC's */,
 				05A009342A583261003EB4B4 /* Actions */,
 				05EC014F2A4D8501008393DB /* Assets */,
 				05EC01382A4D8129008393DB /* AppDelegate.swift */,
-				05EC01422A4D8129008393DB /* Main.storyboard */,
 				05EC01452A4D812C008393DB /* Assets.xcassets */,
 				05EC01472A4D812C008393DB /* LaunchScreen.storyboard */,
+				0561875C2A5D29F4004F3179 /* Info.plist */,
 			);
 			path = FlyingShip;
 			sourceTree = "<group>";
@@ -310,7 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05EC01442A4D8129008393DB /* Main.storyboard in Resources */,
+				056187852A5D77D3004F3179 /* troika.otf in Resources */,
 				05EC013B2A4D8129008393DB /* GameScene.sks in Resources */,
 				05EC01462A4D812C008393DB /* Assets.xcassets in Resources */,
 				05EC01532A4D8527008393DB /* Images.xcassets in Resources */,
@@ -319,7 +373,6 @@
 				05A009442A5C2D0C003EB4B4 /* Assets.xcassets in Resources */,
 				0561875B2A5D28A6004F3179 /* papercut.ttf in Resources */,
 				05EC013D2A4D8129008393DB /* Actions.sks in Resources */,
-				056187662A5D508F004F3179 /* pixelcyr_normal.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,14 +425,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0561877C2A5D70E1004F3179 /* TransitionProtocol.swift in Sources */,
 				056187582A5D23D7004F3179 /* LabelNode.swift in Sources */,
+				056187782A5D70CA004F3179 /* PushTransition.swift in Sources */,
 				05EC013F2A4D8129008393DB /* GameScene.swift in Sources */,
 				056187562A5D1D62004F3179 /* Profile.swift in Sources */,
 				05A0093A2A597E38003EB4B4 /* Enemy.swift in Sources */,
+				056187722A5D7057004F3179 /* RouterProtocol.swift in Sources */,
 				056187542A5D1D1F004F3179 /* GameSettings.swift in Sources */,
 				05A009402A5C26AB003EB4B4 /* PlayerRocket.swift in Sources */,
 				05A0093C2A597F91003EB4B4 /* EnemyType.swift in Sources */,
+				0561878B2A5D8878004F3179 /* HeaderCollectionView.swift in Sources */,
+				056187762A5D70B8004F3179 /* ModalTransition.swift in Sources */,
+				056187802A5D72E3004F3179 /* AddRoute.swift in Sources */,
 				0561876E2A5D626B004F3179 /* AddVCViewModel.swift in Sources */,
+				0561878D2A5D8A9C004F3179 /* AddCollectionViewCell.swift in Sources */,
 				056187642A5D4097004F3179 /* EntranceTableViewCell.swift in Sources */,
 				0561876C2A5D588D004F3179 /* AddVC.swift in Sources */,
 				05EC01412A4D8129008393DB /* GameViewController.swift in Sources */,
@@ -389,20 +449,16 @@
 				056187612A5D3EF9004F3179 /* EntranceViewModel.swift in Sources */,
 				056187682A5D54BB004F3179 /* EntranceTableViewCellADD.swift in Sources */,
 				05EC01512A4D8517008393DB /* Constants.swift in Sources */,
+				0561877E2A5D7146004F3179 /* EntranceRoute.swift in Sources */,
+				056187892A5D8622004F3179 /* Flow+Extension.swift in Sources */,
+				0561877A2A5D70D4004F3179 /* EmptyTransition.swift in Sources */,
+				056187742A5D7061004F3179 /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		05EC01422A4D8129008393DB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				05EC01432A4D8129008393DB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		05EC01472A4D812C008393DB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -543,7 +599,6 @@
 				INFOPLIST_FILE = FlyingShip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -574,7 +629,6 @@
 				INFOPLIST_FILE = FlyingShip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -61,7 +61,6 @@ final class EntranceTableViewCell: UITableViewCell {
         containerView.addSubview(profileScore)
         containerView.addSubview(profileName)
         backgroundColor = .clear
-        
     }
     private func makeConstraints(){
         containerView.snp.makeConstraints { make in

@@ -15,16 +15,13 @@ class GameViewController: UIViewController {
         let view = UIView()
         return view
     }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         showGame()
     }
-
     override var shouldAutorotate: Bool {
         return true
     }
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -32,14 +29,12 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
     private func showGame(){
         if let view = self.view as! SKView? {
-            let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), player: Constants.ImagesString.playerPlane_1, background: Constants.ImagesString.background)
+            let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), player: Constants.ImagesString.playerPlane_1, background: Constants.ImagesString.background_1)
             scene.scaleMode = .aspectFill
             scene.setupDelegate = self
             view.presentScene(scene)

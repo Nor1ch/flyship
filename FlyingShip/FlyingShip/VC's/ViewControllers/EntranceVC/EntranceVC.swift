@@ -17,7 +17,8 @@ private extension CGFloat {
 
 final class EntranceVC: UIViewController {
     
-    private let viewModel: EntranceViewModel = EntranceViewModel()
+    private let viewModel: EntranceViewModel
+    
     private lazy var backgroundImage: UIImageView = {
         let view = UIImageView()
         view.image = Constants.Images.backgroundEntrance
@@ -29,6 +30,7 @@ final class EntranceVC: UIViewController {
         view.text = "FLYSHIP"
         view.font = Constants.Fonts.logoLabel
         view.textColor = .white
+        view.alpha = 0
         return view
     }()
     private lazy var tableView: UITableView = {
@@ -36,9 +38,16 @@ final class EntranceVC: UIViewController {
         view.separatorStyle = .none
         view.rowHeight = CGFloat.rowHeight
         view.backgroundColor = .clear
+        view.alpha = 0
         return view
     }()
-    
+    init(viewModel: EntranceViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -82,6 +91,8 @@ final class EntranceVC: UIViewController {
                 make.right.equalToSuperview().inset(CGFloat.tableViewOffset)
                 make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
             }
+            self.logoLabel.alpha = 1
+            self.tableView.alpha = 1
             self.view.layoutIfNeeded()
         }
     }
@@ -106,9 +117,11 @@ extension EntranceVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EntranceTableViewCell.self)", for: indexPath) as? EntranceTableViewCell else { return UITableViewCell() }
             let item = viewModel.testArray[indexPath.row]
             cell.setupCell(model: item)
+            cell.selectionStyle = .none
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EntranceTableViewCellADD.self)", for: indexPath) as? EntranceTableViewCellADD else { return UITableViewCell()}
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -117,8 +130,17 @@ extension EntranceVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         default:
-            let vc = AddVC()
-            self.present(vc, animated: true, completion: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
+                let cell = tableView.cellForRow(at: indexPath)
+                cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            } completion: { bool in
+                self.viewModel.openAdd()
+                tableView.cellForRow(at: indexPath)?.transform = .identity
+            }
         }
+    }
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        true
     }
 }

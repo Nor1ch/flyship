@@ -10,11 +10,29 @@ import UIKit
 
 enum Constants {
     enum ImagesString{
-        static var background: String {
-            "background"
+        static var background_1: String {
+            "background_1"
+        }
+        static var background_2: String {
+            "background_2"
+        }
+        static var background_3: String {
+            "background_3"
         }
         static var playerPlane_1: String {
             "playerPlane_1"
+        }
+        static var playerPlane_2: String {
+            "playerPlane_2"
+        }
+        static var playerPlane_3: String {
+            "playerPlane_3"
+        }
+        static var playerPlane_4: String {
+            "playerPlane_4"
+        }
+        static var playerPlane_5: String {
+            "playerPlane_5"
         }
         static var enemyLarge: String {
             "largeEnemy"
@@ -41,16 +59,34 @@ enum Constants {
         static var backgroundEntrance: UIImage? {
             UIImage(named: "backgroundEntrance")
         }
+        static var backgroundAdd: UIImage? {
+            UIImage(named: "backgroundAdd")
+        }
+        static var defaultProfile: UIImage? {
+            UIImage(named: "defaultProfile")
+        }
     }
     enum Fonts {
         static var logoLabel: UIFont? {
-            UIFont(name: "papercut", size: 40)
+            UIFont(name: "papercut", size: 55)
         }
         static var profileName: UIFont? {
-            UIFont(name: "pixelcyr_normal", size: 12)
+            UIFont(name: "troika", size: 14)
         }
         static var profileScore: UIFont? {
-            UIFont(name: "papercut", size: 22)
+            UIFont(name: "troika", size: 22)
+        }
+        static var changePhoto: UIFont? {
+            UIFont(name: "troika", size: 15)
+        }
+        static var createButton: UIFont? {
+            UIFont(name: "troika", size: 20)
+        }
+        static var textField: UIFont? {
+            UIFont(name: "troika", size: 20)
+        }
+        static var header: UIFont? {
+            UIFont(name: "troika", size: 25)
         }
     }
 }
