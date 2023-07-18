@@ -13,8 +13,8 @@ protocol AddRoute {
 
 extension AddRoute where Self: Router {
     func openAdd(transition: Transition) {
-        let router = MainRouter(rootTransition: EmptyTransition())
-        let viewModel = AddVCViewModel(router: router)
+        let router = MainRouter(rootTransition: transition)
+        let viewModel = AddViewModel(router: router)
         let viewController = AddVC(viewModel: viewModel)
         router.root = viewController
         route(to: viewController, as: transition)

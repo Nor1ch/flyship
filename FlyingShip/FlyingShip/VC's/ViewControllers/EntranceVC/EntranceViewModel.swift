@@ -6,15 +6,28 @@
 //
 
 import Foundation
+import Combine
 
 final class EntranceViewModel {
-    typealias Route = AddRoute
+    typealias Route = AddRoute & MenuRoute
     private let router: Route
+    var profilesArray: [Profile] = []
+    private var cancelable = Set<AnyCancellable>()
+    
     init(router: Route){
         self.router = router
+        ProfileManager.shared.$profiles
+            .sink { array in
+                self.profilesArray = array
+            }
+            .store(in: &cancelable)
     }
-    let testArray: [Profile] = [Profile(name: "Илья Черепанин", bestScroe: 300, image: nil, playerImage: "", backgroundImage: ""),Profile(name: "Ilia Cherepanin", bestScroe: 499, image: nil, playerImage: "", backgroundImage: ""),Profile(name: "ilia", bestScroe: 1500, image: nil, playerImage: "", backgroundImage: ""),Profile(name: "ilia", bestScroe: 10000, image: nil, playerImage: "", backgroundImage: ""),]
+    
+    
     func openAdd(){
         router.openAdd()
+    }
+    func openMenu(){
+        router.openMenu()
     }
 }

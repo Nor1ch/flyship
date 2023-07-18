@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Player: SKSpriteNode {
+final class Player: SKSpriteNode {
     let playerSize: CGSize
     init(image: String, size: CGSize, position: CGFloat){
         self.playerSize = size
@@ -16,11 +16,10 @@ class Player: SKSpriteNode {
         super.init(texture: texture, color: .white, size: playerSize)
         
         self.size = playerSize
-        self.name = "player"
+        self.name = NameTypes.player
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = 1
         self.position = CGPoint(x: 0, y: position - self.size.width*5)
-//        physicsBody = SKPhysicsBody(texture: texture, size: self.size)
         physicsBody = SKPhysicsBody(circleOfRadius: self.frame.width/2)
         physicsBody?.categoryBitMask = Collision.player.rawValue
         physicsBody?.collisionBitMask = Collision.enemy.rawValue | Collision.enemyWeapon.rawValue

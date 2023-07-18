@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 
-class Enemy: SKSpriteNode {
+final class Enemy: SKSpriteNode {
     let type: EnemyType
     var lastFire: Double = 0
     var shields: Int
@@ -22,12 +22,11 @@ class Enemy: SKSpriteNode {
         let texture = SKTexture(imageNamed: type.name)
         
         super.init(texture: texture, color: .white, size: CGSize(width: enemySize, height: enemySize))
-//        physicsBody = SKPhysicsBody(texture: texture, size: CGSize(width: enemySize, height: enemySize))
         physicsBody = SKPhysicsBody(circleOfRadius: enemySize/2)
         physicsBody?.categoryBitMask = Collision.enemy.rawValue
         physicsBody?.collisionBitMask = Collision.player.rawValue | Collision.playerWeapon.rawValue
         physicsBody?.contactTestBitMask = Collision.player.rawValue | Collision.playerWeapon.rawValue
-        name = "enemy"
+        name = NameTypes.enemy
         let positionOffsetX = Int.random(in: Int((minX + enemySize))...Int((maxX - enemySize)))
         position = CGPoint(x: CGFloat(positionOffsetX), y: startPositionY + enemySize/2)
         makePath()
@@ -43,7 +42,5 @@ class Enemy: SKSpriteNode {
         let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: false, speed: type.speed)
         let sequence = SKAction.sequence([movement, .removeFromParent()])
         run(sequence)
-    }
-    private func doRocket(){
     }
 }

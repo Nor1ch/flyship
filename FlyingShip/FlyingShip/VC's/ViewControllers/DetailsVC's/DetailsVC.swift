@@ -1,12 +1,11 @@
 //
-//  AddVC.swift
+//  DetailsVC.swift
 //  FlyingShip
 //
-//  Created by Nor1 on 11.07.2023.
+//  Created by Nor1 on 14.07.2023.
 //
 
 import Foundation
-import SnapKit
 import UIKit
 
 private extension CGFloat {
@@ -21,15 +20,25 @@ private extension CGFloat {
     static let collectionViewOffset = 10.0
 }
 
-protocol AddVCDelegate: AnyObject {
-    
+protocol DetailsVCDelegate: AnyObject {
+    func returnProfile(profile: Profile)
 }
 
-final class AddVC: UIViewController {
+//MARK: - Parent ViewController for Settings and Add VC's
+
+class DetailsVC: UIViewController {
     
-    private let viewModel: AddVCViewModel
+    weak var delegate: DetailsVCDelegate?
+    
+//MARK: - let/var
+   
     private var indexPlayer: IndexPath = IndexPath(row: 0, section: 0)
     private var indexBackground: IndexPath = IndexPath(row: 0, section: 1)
+    private var image: String?
+    private let viewModel: DetailsViewModel = DetailsViewModel()
+    private var arrayOfName: [String] = []
+    
+//MARK: - Child Views
     
     private lazy var backgorundImage: UIImageView = {
         let view = UIImageView()
@@ -63,18 +72,12 @@ final class AddVC: UIViewController {
     private lazy var createButton : UIButton = {
         let view = UIButton()
         var config = UIButton.Configuration.filled()
-        let attr : [NSAttributedString.Key: Any] = [
-            .font : Constants.Fonts.createButton as Any,
-            .foregroundColor : UIColor.orange as Any
-        ]
-        let title = "Well done, buddy"
         config.titleAlignment = .center
         config.baseBackgroundColor = .cyan
-        config.attributedTitle = AttributedString(title, attributes: AttributeContainer(attr))
         config.background.cornerRadius = CGFloat.cornerRadius
         config.cornerStyle = .fixed
         view.configuration = config
-        view.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
+        view.isEnabled = false
         return view
     }()
     private lazy var collectionView: UICollectionView = {
@@ -83,7 +86,7 @@ final class AddVC: UIViewController {
         view.isScrollEnabled = false
         return view
     }()
-    private lazy var textField: UITextField = {
+    private lazy var textFieldName: UITextField = {
         let view = UITextField()
         view.backgroundColor = .lightGray
         view.font = Constants.Fonts.textField
@@ -93,28 +96,28 @@ final class AddVC: UIViewController {
         return view
     }()
     
-    init(viewModel: AddVCViewModel){
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//MARK: - lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
         setupCollectionView()
+        ProfileManager.shared.profiles.forEach {
+            arrayOfName.append($0.name)
+        }
     }
+
+//MARK: - private funcs
     
     private func setupViews(){
         view.addSubview(backgorundImage)
         view.addSubview(profileImage)
         view.addSubview(changeButton)
-        view.addSubview(textField)
+        view.addSubview(textFieldName)
         view.addSubview(createButton)
         view.addSubview(collectionView)
+        textFieldName.delegate = self
     }
     private func makeConstraints(){
         backgorundImage.snp.makeConstraints { make in
@@ -132,14 +135,14 @@ final class AddVC: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(profileImage.snp.bottom)
         }
-        textField.snp.makeConstraints { make in
+        textFieldName.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(CGFloat.textFieldOffset)
             make.right.equalToSuperview().inset(CGFloat.textFieldOffset)
             make.height.equalTo(CGFloat.buttonHeight)
             make.top.equalTo(changeButton.snp.bottom).offset(CGFloat.textFieldOffset)
         }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(CGFloat.collectionViewOffset)
+            make.top.equalTo(textFieldName.snp.bottom).offset(CGFloat.collectionViewOffset)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(createButton.snp.top)
         }
@@ -156,6 +159,9 @@ final class AddVC: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+    
+//MARK: - animation for choosing items
+    
     private func transform(_ anim: UICollectionViewCell, _ reverse: UICollectionViewCell) {
         if anim != reverse {
             UIView.animate(withDuration: 0.2) {
@@ -166,15 +172,55 @@ final class AddVC: UIViewController {
             }
         }
     }
+    
+//MARK: - ImagePicker
+    
     @objc private func changePhotoTapped(){
-        
+        let picker = UIImagePickerController()
+                picker.delegate = self
+                picker.sourceType = .photoLibrary
+                present(picker, animated: true)
     }
-    @objc private func createTapped(){
-        
+    
+//MARK: - setup views for child controllers
+    
+    func setupCreateButton(title: String, selector: Selector, isEnabled: Bool) {
+        let attr : [NSAttributedString.Key: Any] = [
+            .font : Constants.Fonts.createButton as Any,
+            .foregroundColor : UIColor.orange as Any
+        ]
+        let title = title
+        createButton.setAttributedTitle(NSAttributedString(string: title, attributes: attr), for: .normal)
+        createButton.isEnabled = isEnabled
+        createButton.addTarget(self, action: selector, for: .touchUpInside)
+    }
+    func setupIndexes(profile: Profile){
+        indexPlayer = IndexPath(row: viewModel.playerArray.firstIndex(of: profile.playerImage) ?? 0, section: 0)
+        indexBackground = IndexPath(row: viewModel.backgroundArray.firstIndex(of: profile.backgroundImage) ?? 0, section: 1)
+    }
+    func setupTextField(name: String){
+        textFieldName.text = name
+        textFieldName.isEnabled = false
+    }
+    func setupImage(image: String?){
+        if let image = image {
+            let loadedImage = UserDefaults.standard.loadImage(fileName: image)
+            if loadedImage != nil {
+                profileImage.image = loadedImage
+            }
+        }
+    }
+    func takeCurrentProfile() -> Profile {
+        return Profile(name: textFieldName.text ?? "", bestScore: 0, image: image, playerImage: viewModel.playerArray[indexPlayer.row], backgroundImage: viewModel.backgroundArray[indexBackground.row])
+    }
+    func takeCurrentProfileImages() -> (player: String, background: String, image: String?) {
+        return (player: viewModel.playerArray[indexPlayer.row], background: viewModel.backgroundArray[indexBackground.row], image: image)
     }
 }
 
-extension AddVC: UICollectionViewDataSource {
+//MARK: - extension collectionView data source
+
+extension DetailsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch indexPath.section {
         case 0:
@@ -205,7 +251,7 @@ extension AddVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(AddCollectionViewCell.self)", for: indexPath) as? AddCollectionViewCell else { return UICollectionViewCell()}
             let item = viewModel.playerArray[indexPath.row]
             cell.setupCell(imageString: item)
-            if indexPath.row == 0 {
+            if indexPath.row == indexPlayer.row {
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut){
                     cell.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                     cell.layer.borderWidth = 1
@@ -216,7 +262,7 @@ extension AddVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(AddCollectionViewCell.self)", for: indexPath) as? AddCollectionViewCell else { return UICollectionViewCell()}
             let item = viewModel.backgroundArray[indexPath.row]
             cell.setupCell(imageString: item)
-            if indexPath.row == 0 {
+            if indexPath.row == indexBackground.row {
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut){
                     cell.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                     cell.layer.borderWidth = 1
@@ -226,8 +272,12 @@ extension AddVC: UICollectionViewDataSource {
         }
     }
 }
-extension AddVC: UICollectionViewDelegate {
+
+//MARK: - extension collectionView delegate
+
+extension DetailsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.view.endEditing(true)
         switch indexPath.section {
         case 0:
             transform(collectionView.cellForItem(at: indexPath) ?? UICollectionViewCell(), collectionView.cellForItem(at: indexPlayer) ?? UICollectionViewCell())
@@ -238,3 +288,34 @@ extension AddVC: UICollectionViewDelegate {
         }
     }
 }
+
+//MARK: - extension image picker
+
+extension DetailsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            let name = UserDefaults.standard.saveImage(image: pickedImage)
+            self.image = name
+            profileImage.image = pickedImage
+            picker.dismiss(animated: true)
+        }
+    }
+}
+
+//MARK: - extension textField delegate
+
+extension DetailsVC: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let name = textFieldName.text {
+            if name != "" && !arrayOfName.contains(name){
+                createButton.isEnabled = true
+            } else {
+                createButton.isEnabled = false
+            }
+        }
+    }
+}
+

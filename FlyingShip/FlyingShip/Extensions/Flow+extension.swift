@@ -19,6 +19,9 @@ private extension CGFloat {
 }
 
 extension UICollectionViewFlowLayout {
+    
+//MARK: - collectionView flow with 2 section: Player images and Background images
+    
     static func playerAndBackgroundFlow() -> UICollectionViewCompositionalLayout {
         let flowLayout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
             switch sectionNumber {

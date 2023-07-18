@@ -8,16 +8,22 @@
 import Foundation
 import SnapKit
 import UIKit
+import Combine
 
 private extension CGFloat {
     static let logoOffset = 50.0
     static let tableViewOffset = 25.0
     static let rowHeight = 100.0
+    static let scale095 = 0.95
 }
 
 final class EntranceVC: UIViewController {
     
+//MARK: - let/var
+    
     private let viewModel: EntranceViewModel
+    private var canceallabel = Set<AnyCancellable>()
+//MARK: - views
     
     private lazy var backgroundImage: UIImageView = {
         let view = UIImageView()
@@ -41,6 +47,9 @@ final class EntranceVC: UIViewController {
         view.alpha = 0
         return view
     }()
+    
+//MARK: - init
+    
     init(viewModel: EntranceViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -48,14 +57,29 @@ final class EntranceVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//MARK: - lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         startAnimation()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if ProfileManager.shared.currentProfile != nil {
+            DispatchQueue.main.async {
+                self.tableView.reloadSections([0], with: .automatic)
+            }
+        }
+    }
+    
+//MARK: - private funcs
+    
     private func setupViews(){
         view.addSubview(backgroundImage)
         view.addSubview(logoLabel)
@@ -79,6 +103,9 @@ final class EntranceVC: UIViewController {
             make.height.equalToSuperview()
         }
     }
+
+//MARK: - animation on load
+    
     private func startAnimation(){
         UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut) {
             self.logoLabel.snp.remakeConstraints { make in
@@ -98,6 +125,8 @@ final class EntranceVC: UIViewController {
     }
 }
 
+//MARK: - extension tableView data source
+
 extension EntranceVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         2
@@ -105,7 +134,7 @@ extension EntranceVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return viewModel.testArray.count
+            return viewModel.profilesArray.count
         default:
             return 1
         }
@@ -115,7 +144,7 @@ extension EntranceVC: UITableViewDataSource {
         switch indexPath.section {
         case 0 :
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EntranceTableViewCell.self)", for: indexPath) as? EntranceTableViewCell else { return UITableViewCell() }
-            let item = viewModel.testArray[indexPath.row]
+            let item = viewModel.profilesArray[indexPath.row]
             cell.setupCell(model: item)
             cell.selectionStyle = .none
             return cell
@@ -126,14 +155,27 @@ extension EntranceVC: UITableViewDataSource {
         }
     }
 }
+
+//MARK: - extension tableView delegate
+
 extension EntranceVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
+        case 0:
+            tableView.deselectRow(at: indexPath, animated: true)
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
+                let cell = tableView.cellForRow(at: indexPath)
+                cell?.transform = CGAffineTransform(scaleX: CGFloat.scale095, y: CGFloat.scale095)
+            } completion: { bool in
+                ProfileManager.shared.currentProfile = ProfileManager.shared.profiles[indexPath.row]
+                self.viewModel.openMenu()
+                tableView.cellForRow(at: indexPath)?.transform = .identity
+            }
         default:
             tableView.deselectRow(at: indexPath, animated: true)
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
                 let cell = tableView.cellForRow(at: indexPath)
-                cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                cell?.transform = CGAffineTransform(scaleX: CGFloat.scale095, y: CGFloat.scale095)
             } completion: { bool in
                 self.viewModel.openAdd()
                 tableView.cellForRow(at: indexPath)?.transform = .identity
@@ -142,5 +184,33 @@ extension EntranceVC: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         true
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch indexPath.section {
+        case 0:
+            return true
+        default:
+            return false
+        }
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+//            self.viewModel.profilesArray.remove(at: indexPath.row)
+            ProfileManager.shared.profiles.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
+}
+
+//MARK: - extension detailsVC delegate
+
+extension EntranceVC: DetailsVCDelegate {
+    func returnProfile(profile: Profile) {
+        ProfileManager.shared.profiles.insert(profile, at: 0)
+        DispatchQueue.main.async {
+            self.tableView.reloadSections([0], with: .automatic)
+        }
     }
 }

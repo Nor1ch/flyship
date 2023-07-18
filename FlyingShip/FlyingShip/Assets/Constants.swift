@@ -65,6 +65,12 @@ enum Constants {
         static var defaultProfile: UIImage? {
             UIImage(named: "defaultProfile")
         }
+        static var leftDoor: UIImage? {
+            UIImage(named: "leftDoor")
+        }
+        static var rightDoor: UIImage? {
+            UIImage(named: "rightDoor")
+        }
     }
     enum Fonts {
         static var logoLabel: UIFont? {
@@ -89,4 +95,12 @@ enum Constants {
             UIFont(name: "troika", size: 25)
         }
     }
+}
+enum NameTypes {
+    static let player = "player"
+    static let background = "background"
+    static let enemy = "enemy"
+    static let font = "papercut"
+    static let playerWeapon = "playerWeapon"
+    
 }

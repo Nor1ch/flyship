@@ -10,8 +10,10 @@ import SpriteKit
 private extension CGFloat {
     static let rocketWidth = 10.0
     static let rocketHeight = 20.0
+    static let radiusTexture = 15.0
 }
 class PlayerRocket: SKSpriteNode {
+    
     private var maxY: CGFloat
     
     init(position: CGPoint, maxY: CGFloat){
@@ -22,12 +24,11 @@ class PlayerRocket: SKSpriteNode {
         super.init(texture: texture, color: .white, size: CGSize(width: CGFloat.rocketWidth, height: CGFloat.rocketHeight))
         
         self.position = position
-//        physicsBody = SKPhysicsBody(texture: texture, size: CGSize(width: CGFloat.rocketWidth, height: CGFloat.rocketHeight))
-        physicsBody = SKPhysicsBody(circleOfRadius: 15)
+        physicsBody = SKPhysicsBody(circleOfRadius: CGFloat.radiusTexture)
         physicsBody?.categoryBitMask = Collision.playerWeapon.rawValue
         physicsBody?.collisionBitMask = Collision.enemy.rawValue | Collision.enemyWeapon.rawValue
         physicsBody?.contactTestBitMask = Collision.enemy.rawValue | Collision.enemyWeapon.rawValue
-        name = "playerWeapon"
+        name = NameTypes.playerWeapon
         makePath()
     }
     required init?(coder aDecoder: NSCoder) {

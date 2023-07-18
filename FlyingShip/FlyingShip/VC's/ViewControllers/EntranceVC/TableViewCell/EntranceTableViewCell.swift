@@ -87,9 +87,14 @@ final class EntranceTableViewCell: UITableViewCell {
     }
     func setupCell(model: Profile){
         profileName.text = model.name
-        profileScore.text = "Score: " + "\(model.bestScroe)"
-        if model.image == nil {
-            profileImage.image = UIImage(named: Constants.ImagesString.playerPlane_1)
+        profileScore.text = "Score: " + "\(model.bestScore)"
+        if let image = model.image {
+            let loadedImage = UserDefaults.standard.loadImage(fileName: image)
+            if let loadedImage = loadedImage {
+                profileImage.image = loadedImage
+            }
+        } else {
+            profileImage.image = Constants.Images.defaultProfile
         }
     }
 }

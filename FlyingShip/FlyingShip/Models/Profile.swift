@@ -8,9 +8,9 @@
 import Foundation
 
 
-struct Profile {
+struct Profile: Codable {
     let name: String
-    var bestScroe: Int
+    var bestScore: Int
     let image: String?
     let playerImage: String
     let backgroundImage: String
