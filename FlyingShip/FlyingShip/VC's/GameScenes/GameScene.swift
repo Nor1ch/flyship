@@ -66,7 +66,7 @@ final class GameScene: SKScene {
             }
         }
     }
-    private var playerLives = 1 {
+    private var playerLives = 3 {
         didSet {
             liveLabel?.text = "Live: " + "\(playerLives)"
         }
